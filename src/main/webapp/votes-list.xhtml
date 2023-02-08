@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/page-template.xhtml">
+    <ui:define name="panel-main">
+            <section>
+                <h:form>
+                    <div class="card" >
+                        <p:dataTable
+                                var="vote"
+                                scrollable="true"
+                                scrollHeight="70vh"
+                                value="#{listing.votes}" >
+                            <p:column headerText="Code"
+                                      style="width:30px;">
+                                <h:outputText value="#{vote.id}" />
+                            </p:column>
+
+                            <p:column
+                                    headerText="Party"
+                                    filterBy="#{vote.name}"
+                                    filterMatchMode="contains">
+                                <h:outputText value="#{vote.partyType}" />
+                            </p:column>
+
+                            <p:column headerText="Type" style="width:60px;">
+                                <h:outputText value="#{vote.name}" />
+                            </p:column>
+
+                            <p:column headerText="%" style="width:60px;">
+                                <h:outputText value="#{vote.pct}" />
+                            </p:column>
+                        </p:dataTable>
+                    </div>
+                </h:form>
+            </section>
+    </ui:define>
+</ui:composition>
+</html>
